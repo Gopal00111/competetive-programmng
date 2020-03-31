@@ -1,0 +1,70 @@
+
+//@ By Mer Gopal
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.*;
+public class MyClass {
+    public static void main(String args[]) {
+      Scanner in=new Scanner(System.in);
+      int n=in.nextInt();
+      int a[]=new int[n];
+      for(int i=0;i<n;i++)
+      {
+          a[i]=in.nextInt();
+      }
+      fun(n,a);
+      
+     
+    }
+    public static void fun(int n,int a[])
+    {
+        int max=a[0];
+        for(int i=0;i<n;i++)
+        {
+            if(a[i]>max)
+            {
+                max=a[i];
+            }
+        }
+        int c[]=new int[max+1];
+        for(int i=0;i<n;i++)
+        {
+            int index=a[i];
+            c[index]+=1;
+        }
+        ArrayList<Integer> count=new ArrayList<Integer>();
+           ArrayList<Integer> indx=new ArrayList<Integer>();
+           for(int i=0;i<=max;i++)
+           {
+               if(c[i]!=0)
+               {
+                  count.add(c[i]);
+                  indx.add(i);
+               }
+           }
+         for(int i=0;i<count.size()-1;i++)
+         {
+             if(count.get(i)==count.get(i+1))
+             {
+                 if(indx.get(i)<indx.get(i+1))
+                 {
+                     Collections.swap(count,i,i+1);
+                     
+                     Collections.swap(indx,i,i+1);
+                 }
+               
+             }
+               else if(count.get(i)<count.get(i+1))
+               {
+                    Collections.swap(count,i,i+1);
+                     
+                     Collections.swap(indx,i,i+1);
+               }
+         }
+         for(int i=0;i<indx.size();i++)
+         {
+             System.out.print(indx.get(i)+" ");
+         }
+    }
+}
