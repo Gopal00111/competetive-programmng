@@ -1,0 +1,57 @@
+
+import java.util.*;
+
+public class TestClass {
+    public static void main(String args[] ) throws Exception {
+       Scanner in=new Scanner(System.in);
+       int n=in.nextInt();
+       int a[]=new int[n];
+       for(int i=0;i<n;i++)
+       {
+           a[i]=in.nextInt();
+       }
+       
+       
+       int i=-1;
+       for(i=0;i<n;i++)
+       {
+           if(a[i]%7==0 )
+           {
+              int min=a[i];
+              int flag=minfun(min,a);
+               if(flag==0)
+               {
+                   break;
+               }
+               
+           }
+       }
+  if(i>0)
+  {
+       System.out.println(i);
+  }
+  else
+  {
+      System.out.println(i);
+  }
+
+
+    }
+    public static int minfun(int min,int a[])
+    {
+        int n=a.length;
+        int ans=0;
+        for(int i=0;i<n;i++)
+              { 
+                   if(a[i]%7==0)
+                   {
+                       if(a[i]<min)
+                       {
+                       ans=1;
+                       break;
+                       }
+                   }
+              }
+              return ans;
+    }
+}
