@@ -1,0 +1,29 @@
+
+import java.util.*;
+
+
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+   Scanner in=new Scanner(System.in);
+   int g=0;
+    int t=7;
+   int l=in.nextInt();
+   while(l-->0)
+   {
+       
+       int n=in.nextInt();
+       if(n-g<=t-n)
+       {
+           g=n;
+           System.out.println("A");
+       }
+       else if(n-g>t-n)
+       {
+           t=n;
+           System.out.println("B");
+       }
+
+   }
+
+    }
+}
