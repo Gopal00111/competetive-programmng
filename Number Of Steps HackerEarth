@@ -1,0 +1,51 @@
+
+
+import java.util.*;
+
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+      
+     Scanner in=new Scanner(System.in);
+     int n=in.nextInt();
+     int a[]=new int[n];
+     int b[]=new int[n];
+     for(int i=0;i<n;i++)
+     {
+         a[i]=in.nextInt();
+     }
+     for(int i=0;i<n;i++)
+     {
+         b[i]=in.nextInt();
+     }
+     int min=a[0];
+     for(int i=1;i<n;i++)
+     {
+
+         if(a[i]<min)
+         {
+             min=a[i];
+         }
+     }
+     int count=0;
+   for(int i=0;i<n;i++)
+   {
+       if(a[i]>min)
+       {
+       while(a[i]!=min)
+       {
+           a[i]=a[i]-b[i];
+           count++;
+       }
+       }
+       else if(a[i]<min)
+       {
+                 System.out.println("-1");
+                 break;
+       }
+   }
+   System.out.println(count);
+    }
+    
+
+}
+
