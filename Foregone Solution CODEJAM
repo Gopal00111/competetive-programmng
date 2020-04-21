@@ -1,0 +1,99 @@
+import java.util.*;
+public class MyClass {
+    public static int counter=0;
+    public static void main(String args[]) {
+     Scanner in=new Scanner(System.in);
+     int t=in.nextInt();
+     while(t-->0)
+     {
+         int n=in.nextInt();
+         forgone(n);
+     }
+     
+    }
+    public static void forgone(int n)
+    {
+        int a=0;
+        int b=0;
+        if(n%2==0)
+        {
+         a=(int)n/2;
+         b=(int)n/2;
+        }
+        else
+        {
+        a=(int)n/2;
+        b=(int)n/2+1;
+        }
+        String str1=Integer.toString(a);
+        String  str2=Integer.toString(b);
+        int len=str1.length();
+        int count=0;
+        int condition=0;
+        for(int i=0;i<len;i++)
+        {
+            if(str1.charAt(i)=='4')
+            {
+                count=1;
+                break;
+                
+            }
+        }
+      if(str1.charAt(0)=='4')
+      {
+          condition=1;
+      }
+        if(count==0)
+        {
+            counter++;
+            System.out.println("Case #"+counter+": "+str1+" "+str2);
+        }
+        else
+        {
+            int num=0;
+            if(a%2==0)
+            {
+            if(a%10==4)
+            {
+                a=a-1;
+                b=b+1;
+                num=a;
+            }
+            else
+            {
+                num=a;
+            }
+            }
+            else if(a%2==1)
+            {
+                num=a;
+            }
+         
+
+            int units=10;
+            
+              while(num>10)
+              {
+                  num=num/10;
+                  int remainder=num%10;
+                  if(remainder==4)
+                  {
+                      a=a-units;
+                      b=b+units;
+                  }
+                  units=units*10;
+                  
+              }
+              if(condition==1)
+              {
+                  int val=(int)Math.pow(10,len-1);
+                  a=a-val;
+                  b=b+val;
+              }
+              
+               
+               counter++;
+               System.out.println("Case #"+counter+": "+a+" "+b);
+        }
+    }
+}
