@@ -1,0 +1,100 @@
+// @ by Gopal Mer
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+public class Solution {
+
+   
+   public static void matrixRotation(int a[][],int b[][],int k,int m,int n) {
+                  int ld=0;
+                  int lu=m-1;
+                  int lr=0;
+                  int ll=n-1;
+                 
+                 
+                 while(ld<lu && lr<ll )
+                 {
+                  for(int i=ll;i>lr;i--)
+                  {
+                      b[lr][i-1]=a[lr][i];
+               
+                    
+                  }
+                  lr++;
+                  for(int i=ld;i<lu;i++)
+                  {
+                      b[i+1][ld]=a[i][ld];
+                     
+                  }
+                  ld++;
+                  for(int i=lr-1;i<ll;i++)
+                  {
+                      b[lu][i+1]=a[lu][i];
+                   
+                      
+                  }
+                  lu--;
+                  for(int i=lu+1;i>ld-1;i--)
+                  {
+                      b[i-1][ll]=a[i][ll];
+                      
+                  }
+                 ll--;
+                 }
+                 for(int i=0;i<m;i++)
+                 {
+                     for(int j=0;j<n;j++)
+                     {
+                        a[i][j]=b[i][j];
+
+                     }
+                
+                 }
+
+    }
+        public static void Rotate(int a[][], int b[][],int k,int m,int n)
+        {
+            for(int i=0;i<k;i++)
+            {
+                 matrixRotation(a,b,k,m,n);
+            }
+             for(int i=0;i<m;i++)
+                 {
+                     for(int j=0;j<n;j++)
+                     {
+                        System.out.print(b[i][j]+" ");
+
+                     }
+                     System.out.println();
+                
+                 }
+
+        }
+    public static void main(String[] args) throws IOException {
+      Scanner in=new Scanner(System.in);
+      int m=in.nextInt();
+      int n=in.nextInt();
+      int k=in.nextInt();
+      int a[][]=new int[m][n];
+       int b[][]=new int[m][n];
+      for(int i=0;i<m;i++)
+      {
+          for(int j=0;j<n;j++)
+          {
+              a[i][j]=in.nextInt();
+          }
+      }
+      Rotate(a,b,k,m,n);
+     
+    }
+}
