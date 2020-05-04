@@ -1,0 +1,101 @@
+//@ by gopal mer
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+   static int counter=1;
+
+    
+    public static void main(String args[])
+    {   
+       Scanner in=new Scanner(System.in);
+       int n=in.nextInt();
+       int a[][]=new int[n][n];
+       Solve(a,n);
+    }
+    public static void Solve(int a[][],int n)
+    
+    {
+        if(setQueens(0,n,a))
+        {
+            printQueen(a,n);
+        }
+        else
+        {
+            System.out.println("NOT POSSIBLE");
+        }
+     
+    }
+    public static boolean setQueens(int col,int n,int a[][])
+    {
+        if(col==n)
+        {
+            return true;
+        }
+        else
+        {
+            for(int i=0;i<n;i++)
+            {
+                if(placevalid(i,col,a,n))
+                {
+                    a[i][col]=1;
+                    if(setQueens(col+1,n,a))
+                    {
+                        return true;
+                    }
+                    a[i][col]=0;
+                    
+                }
+        
+            }
+            return false;
+        }
+    }
+    public static boolean placevalid(int row,int col,int a[][],int n)
+    {
+        for(int i=0;i<col;i++)
+        {
+            if(a[row][i]==1)
+            {
+                return false;
+            }
+        }
+        for(int i=row,j=col;i>=0 && j>=0;i--,j--)
+        {
+            if(a[i][j]==1)
+            {
+                return false;
+            }
+        }
+        for(int i=row,j=col;i<n && j>=0;i++,j--)
+        {
+            if(a[i][j]==1)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void printQueen(int a[][],int n)
+    {
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(a[i][j]==1)
+                {
+                    System.out.print(" Q ");
+                }
+                else{
+                    System.out.print(" - ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
