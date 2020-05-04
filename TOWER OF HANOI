@@ -1,0 +1,38 @@
+//@ by mer gopal
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+   static int counter=1;
+
+    
+    public static void main(String args[])
+    {   
+        Scanner in=new Scanner(System.in);
+        int n=in.nextInt();
+        char ch1='A';
+        char ch2='B';
+        char ch3='C';
+        towerOfHanoi(n,ch1,ch2,ch3);
+    }
+    public static void towerOfHanoi(int n,char source,char aux,char dest)
+    {
+        if(n==1)
+        {
+            System.out.println(counter+". Move Rod "+source+" to "+dest);
+            counter++;
+        }
+        else
+        {
+            towerOfHanoi(n-1,source,dest,aux);
+            System.out.println(counter+". Move rod "+source+" to "+dest);
+            counter++;
+            towerOfHanoi(n-1,aux,source,dest);
+        }
+    }
+}
