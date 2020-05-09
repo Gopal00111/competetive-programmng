@@ -1,0 +1,111 @@
+//@ by Gopal Mer
+import java.util.*;
+class Main
+{ 
+    public static void main(String args[])
+    {
+       Scanner in=new Scanner(System.in);
+        int t=in.nextInt();
+        while(t-->0)
+        {
+        int n=in.nextInt();
+         int r=n+1;
+          int c=2*r+1;
+        if(n<=1)
+        {
+            System.out.println("You cannot generate christmas tree");
+         }
+        else if(n>1 && n<=20)
+        {
+             for(int i=0;i<r;i++)
+             {
+                 for(int j=0;j<c;j++)
+                 {
+                      if (j<n-i || j>n+i)
+                      {
+                         System.out.print(" ");
+                      }
+                     else
+                     { 
+                         System.out.print("*");
+                     }
+                 }
+                 System.out.println();
+
+             }
+            if(n>=3 && n<=20)
+            {
+                int row=n-1;
+                int col=2*r+1;
+                   while(row>1 && col>4)
+                   {
+                        for(int i=0;i<row;i++)
+                        {
+                            System.out.print(" ");
+                            for(int j=1;j<c-1;j++)
+                            {
+                                if(j<n-1-i || j>n+1+i)
+                                {
+                                    System.out.print(" ");
+                                }
+                                else
+                                {
+                                   System.out.print("*");
+                                }
+                                
+                             }
+                            System.out.println();
+                        }
+                       row--;
+                       col-=2;
+                   }
+                           for(int i=0;i<2;i++)
+                           {
+                                for(int j=0;j<c;j++)
+                                {
+                                    if(j==n)
+                                    {
+                                        System.out.print("*");
+                                    }
+                                    else
+                                    {
+                                        System.out.print(" ");
+                                    }
+                                }
+                               System.out.println();
+                           }
+                
+            }
+            else{
+                         for(int i=0;i<2;i++)
+                           {
+                                for(int j=0;j<c;j++)
+                                {
+                                    if(j==n)
+                                    {
+                                        System.out.print("*");
+                                    }
+                                    else
+                                    {
+                                        System.out.print(" ");
+                                    }
+                                }
+                               System.out.println();
+                           }
+            
+            }
+            
+        }
+            else if(n>20)
+            {
+                   System.out.println("Tree is no more");
+            }
+            
+        }
+    }
+}
+
+
+    
+
+
