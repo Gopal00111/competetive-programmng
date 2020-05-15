@@ -1,0 +1,167 @@
+// @ by Gopal Mer
+import java.util.*;
+public class numstoWords
+{
+    public static void main(String args[])
+    {
+        Scanner in=new Scanner(System.in);
+        int n=in.nextInt();
+        String str[]={"","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","fourteen","fifteen","Sixteen","Seeventeen","Eighteen","Nineteen","Twenty"};
+        String two[]={"","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};
+        String thre[]={"","One Hundread","Two Hundread","Three Hundread","Four Hundread","Five Hundread","Six Hundread","Seven Hundread","Eight Hundread","Nine Hundread"};
+        String four[]={"","One Thousand","Two Thousand","Three Thousand","Four Thousand","Five Thousand","Six Thousand","Seven Thousand","Eight Thousand","Nine Thousand"};
+         int count = 0;
+         String words="";
+          int num=n;
+        while(num != 0)
+        {
+            num /= 10;
+            ++count;
+        }
+        if(count>4 || n==0)
+        {
+            System.out.println("Please Enter Value Below 1 and 10000");
+        }
+        else{
+        if(count==1)
+        {
+            words=str[n];
+        }
+        else if(count==2)
+        {
+            if(n>=11 && n<=20)
+            {
+                words=str[n];
+            }
+            else if(n>20 && n<100)
+            {
+                int r=n%10;
+                int div=n/10;
+                 String A=two[div];
+                 String B=str[r];
+                 words=A+" "+B;
+                
+            }
+        }
+        else if(count==3)
+        {
+            int nn=n;
+            String s=Integer.toString(nn);
+            char ch1=s.charAt(0);
+            char ch2=s.charAt(1);
+            char ch3=s.charAt(2);
+            int first=Integer. parseInt(String. valueOf(ch1));
+            int second=Integer. parseInt(String. valueOf(ch2));
+            int third=Integer. parseInt(String. valueOf(ch3));
+            if(third==0 && second==0)
+            {
+                 String A=thre[first];
+                 words=A;
+            }
+            else if(third==0 && second!=0)
+            {
+            String A=thre[first];
+            String B=two[second];
+             words=A+" "+B;
+            }
+            else
+            {
+            String A=thre[first];
+            String B=two[second];
+            String C=str[third];
+             words=A+" "+B+" "+C;
+            }
+        }
+         else if(count==4)
+        {
+            int nn=n;
+            String s=Integer.toString(nn);
+            char ch1=s.charAt(0);
+            char ch2=s.charAt(1);
+            char ch3=s.charAt(2);
+            char ch4=s.charAt(3);
+            int first=Integer. parseInt(String. valueOf(ch1));
+            int second=Integer. parseInt(String. valueOf(ch2));
+            int third=Integer. parseInt(String. valueOf(ch3));
+            int forth=Integer. parseInt(String. valueOf(ch4));
+            
+           if(third==0 && second==0 && forth==0)
+            {
+                 String A=four[first];
+                 words=A;
+            }
+            else if(third==0 && forth==0)
+            {
+            String A=four[first];
+            String B=thre[second];
+             words=A+" "+B;
+            }
+            else if(forth==0)
+            {
+             String A=four[first];
+            String B=thre[second];
+             String C=two[third];
+             words=A+" "+B+" "+C;
+            }
+            else if(second==0 && third!=0 && forth!=0)
+            {
+            String A=four[first];
+            String B=two[third];
+             String C=str[forth];
+             words=A+" "+B+" "+C;
+            }
+             else if(second!=0 && third==0 && forth==0)
+            {
+            String A=four[first];
+            String B=thre[second];
+            
+             words=A+" "+B;
+            }
+             else if(second==0 && third==0 && forth!=0)
+            {
+            String A=four[first];
+            String B=str[forth];
+            
+             words=A+" "+B;
+            }
+             else if(second!=0 && third!=0 && forth==0)
+            {
+            String A=four[first];
+            String B=thre[second];
+            String C=two[third];
+            
+             words=A+" "+B+" "+C;
+            }
+             else if(second!=0 && third==0 && forth!=0)
+            {
+            String A=four[first];
+            String B=thre[second];
+            String C=str[forth];
+            
+             words=A+" "+B+" "+C;
+            }
+             else if(second==0 && third!=0 && forth==0)
+            {
+            String A=four[first];
+            String B=two[third];
+         
+            
+            
+             words=A+" "+B;
+            }
+          
+           
+            
+            else 
+            {
+            String A=four[first];
+            String B=thre[second];
+            String C=two[third];
+            String D=str[forth];
+             words=A+" "+B+" "+C+" "+D;
+            }
+        }
+        System.out.println(words);
+        }
+    }
+}
