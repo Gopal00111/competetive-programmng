@@ -1,0 +1,58 @@
+class Solution {
+    public List<Integer> findSubstring(String s, String[] words) {
+        String str="";
+        ArrayList<Integer> list=new ArrayList<Integer>();
+        int n=s.length();
+        int siz=words.length;
+        
+        for(int i=0;i<siz;i++)
+        {
+                   str+=words[i];
+        }
+        int len=str.length();
+        int kk=len;
+        for(int i=0;i<=n-len;i++)
+        {
+            String ss=s.substring(i,kk);
+            if(match(ss,str,len))
+            {
+                list.add(i);
+            }
+            kk++;
+        }
+        return list;
+            
+    }
+    public static boolean match(String ss,String str,int len)
+    {
+        int strhash[]=new int[26];
+        int sshash[]=new int[26];
+        for(int i=0;i<len;i++)
+        {
+            int ind=(int)(str.charAt(i)-'a');
+            strhash[ind]+=1;
+        }
+        for(int i=0;i<len;i++)
+        {
+            int ind=(int)(ss.charAt(i)-'a');
+            sshash[ind]+=1;
+        }
+        int flag=0;
+        for(int i=0;i<26;i++)
+        {
+             if(strhash[i]!=sshash[i])
+             {
+                  flag=1;
+                  break;
+             }
+        }
+        if(flag==1)
+        {
+            return false;
+        }
+        else
+        {
+                return true;
+        }
+    }
+}
